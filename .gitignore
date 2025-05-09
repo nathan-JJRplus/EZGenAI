@@ -17,3 +17,5 @@
 /vendorlib/temp/
 .DS_Store
 /.svn/
+/resources/genai/models/*
+!/resources/genai/models/README.txt
