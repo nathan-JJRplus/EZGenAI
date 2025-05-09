@@ -13,11 +13,11 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import genai.Prompter;
 
-public class JA_GenAI_Prompt extends CustomJavaAction<java.lang.String>
+public class JA_EZGenAI_Prompt extends CustomJavaAction<java.lang.String>
 {
 	private final java.lang.String promptText;
 
-	public JA_GenAI_Prompt(
+	public JA_EZGenAI_Prompt(
 		IContext context,
 		java.lang.String _promptText
 	)
@@ -41,7 +41,7 @@ public class JA_GenAI_Prompt extends CustomJavaAction<java.lang.String>
 	@java.lang.Override
 	public java.lang.String toString()
 	{
-		return "JA_GenAI_Prompt";
+		return "JA_EZGenAI_Prompt";
 	}
 
 	// BEGIN EXTRA CODE

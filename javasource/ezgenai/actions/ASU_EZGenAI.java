@@ -16,9 +16,9 @@ import genai.NativeLoader;
 import java.nio.file.Path;
 import com.mendix.core.Core;
 
-public class ASU_GenAI extends CustomJavaAction<java.lang.Void>
+public class ASU_EZGenAI extends CustomJavaAction<java.lang.Void>
 {
-	public ASU_GenAI(IContext context)
+	public ASU_EZGenAI(IContext context)
 	{
 		super(context);
 	}
@@ -45,7 +45,7 @@ public class ASU_GenAI extends CustomJavaAction<java.lang.Void>
 	@java.lang.Override
 	public java.lang.String toString()
 	{
-		return "ASU_GenAI";
+		return "ASU_EZGenAI";
 	}
 
 	// BEGIN EXTRA CODE
