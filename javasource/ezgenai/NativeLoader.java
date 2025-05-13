@@ -1,4 +1,4 @@
-package genai;
+package ezgenai;
 
 import java.nio.file.Path;
 

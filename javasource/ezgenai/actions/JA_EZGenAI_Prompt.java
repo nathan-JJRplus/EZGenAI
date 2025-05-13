@@ -11,26 +11,42 @@ package ezgenai.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import genai.Prompter;
+import ezgenai.Prompter;
+import ezgenai.SearchParameterProxyHandler;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class JA_EZGenAI_Prompt extends CustomJavaAction<java.lang.String>
 {
+	private final java.lang.String model;
 	private final java.lang.String promptText;
+	/** @deprecated use com.mendix.utils.ListUtils.map(searchParameters, com.mendix.systemwideinterfaces.core.IEntityProxy::getMendixObject) instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final java.util.List<IMendixObject> __searchParameters;
+	private final java.util.List<ezgenai.proxies.SearchParameter> searchParameters;
 
 	public JA_EZGenAI_Prompt(
 		IContext context,
-		java.lang.String _promptText
+		java.lang.String _model,
+		java.lang.String _promptText,
+		java.util.List<IMendixObject> _searchParameters
 	)
 	{
 		super(context);
+		this.model = _model;
 		this.promptText = _promptText;
+		this.__searchParameters = _searchParameters;
+		this.searchParameters = java.util.Optional.ofNullable(_searchParameters)
+			.orElse(java.util.Collections.emptyList())
+			.stream()
+			.map(searchParametersElement -> ezgenai.proxies.SearchParameter.initialize(getContext(), searchParametersElement))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public java.lang.String executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		return Prompter.prompt(null, promptText);
+		return Prompter.prompt(model, promptText, SearchParameterProxyHandler.exportSearchParameters(searchParameters));
 		// END USER CODE
 	}
 

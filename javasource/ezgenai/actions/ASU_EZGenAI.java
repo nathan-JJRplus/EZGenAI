@@ -11,8 +11,8 @@ package ezgenai.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import genai.ModelManager;
-import genai.NativeLoader;
+import ezgenai.ModelManager;
+import ezgenai.NativeLoader;
 import java.nio.file.Path;
 import com.mendix.core.Core;
 

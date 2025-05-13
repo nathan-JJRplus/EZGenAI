@@ -1,4 +1,4 @@
-package genai;
+package ezgenai;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -18,12 +18,11 @@ public class ModelManager {
             String name = modelFolder.getName();
             if (modelFolder.isDirectory()) {
                 LOG.info("Adding model " + name);
-                String absolutePath = modelFolder.getAbsolutePath();
-                mxGenAIList.add(new MxGenAI(name, absolutePath));
+                mxGenAIList.add(new MxGenAI(name, modelFolder.toPath()));
             } else if (name.toLowerCase().startsWith("readme")) {
                 continue;
             } else {
-                throw new RuntimeException("genAI directory setup incorrectly: make sure its structured like this - resources/genai/models/<modelname>/{model}|{model_config.json}");
+                throw new RuntimeException("genAI directory setup incorrectly: make sure its structured like this - resources/genai/models/<modelname>/{modelfiles}");
             }
         }
     }
@@ -40,6 +39,10 @@ public class ModelManager {
 
     
     public static MxGenAI getModel(String name) {
+        if (name == null || name.isEmpty() || name.isBlank()) {
+            return getModel();
+        }
+
         for (MxGenAI mxGenAI : mxGenAIList) {
             if (mxGenAI.getName().equals(name)) {
                 return mxGenAI;

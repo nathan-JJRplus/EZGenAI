@@ -1,16 +1,10 @@
-package genai;
+package ezgenai;
+
+import java.util.Map;
 
 public class Prompter {
-    public static String prompt(String model, String prompt) {
-        MxGenAI mxGenAI = getModel(model);
-        return mxGenAI.getResponse(prompt);
-    }
-
-    private static MxGenAI getModel(String model) {
-        if (model == null || model.isBlank()) {
-            return ModelManager.getModel();
-        } else {
-            return ModelManager.getModel(model);
-        }
+    public static String prompt(String model, String prompt, Map<String, Object> searchParams) {
+        MxGenAI mxGenAI = ModelManager.getModel(model);
+        return mxGenAI.getResponse(prompt, searchParams);
     }
 }
