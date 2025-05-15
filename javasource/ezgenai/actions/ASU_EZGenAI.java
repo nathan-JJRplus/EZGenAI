@@ -16,6 +16,13 @@ import ezgenai.NativeLoader;
 import java.nio.file.Path;
 import com.mendix.core.Core;
 
+/**
+ * This AfterStartup action will:
+ * 1. Load the native libraries from the genai/native-libs folder, using linux or windows depending on the system os
+ * 2. Create MxGenAI instances for each folder inside genai/models
+ * 
+ * If any of this goes wrong, a RuntimeException will be thrown
+ */
 public class ASU_EZGenAI extends CustomJavaAction<java.lang.Void>
 {
 	public ASU_EZGenAI(IContext context)

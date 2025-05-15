@@ -12,7 +12,7 @@ public class NativeLoader {
 
     public static void initNatives(Path nativeLibsDirectory) {
         String directory = getOSSpecificNativeLibsDirectory(nativeLibsDirectory);
-        LOG.debug("Setting property " + NATIVE_PATH_PROPERTY + " to: " + directory);
+        LOG.info("Setting property " + NATIVE_PATH_PROPERTY + " to: " + directory);
         System.setProperty(NATIVE_PATH_PROPERTY, directory);
     }
 
